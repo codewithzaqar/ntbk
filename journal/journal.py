@@ -48,3 +48,16 @@ class Journal:
                 self.save_entries()
                 print(f"Entry '{title}' updated successfully.")
                 return print(f"Entry '{title}' not found.")
+            
+    def export_entries(self, file_format="txt", filename="journal_export"):
+        """Exports journal entries to a .txt or .json file."""
+        if file_format == "json":
+            filename = f"{filename}.json"
+            with open(filename, "w") as f:
+                json.dump([entry.to_dict() for entry in self.entries], f, indent=4)
+        else:  # Default to text format
+            filename = f"{filename}.txt"
+            with open(filename, "w") as f:
+                for entry in self.entries:
+                    f.write(str(entry) + "\n---\n")
+            print(f"Entries exported to {filename}")

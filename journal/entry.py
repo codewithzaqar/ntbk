@@ -10,4 +10,4 @@ class JournalEntry:
         return {"title": self.title, "content": self.content, "date": self.date}
     
     def __str__(self):
-        return f"{self.date} - {self.title}\n{self.content}\n"
+        return f"[{self.date}] {self.title}\n{self.content}\n"

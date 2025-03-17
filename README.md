@@ -9,3 +9,4 @@
 | `search`  | `--keyword` | Search for journal entries by keyword |
 | `delete` | `--title` | Delete a journal entry by title |
 | `edit` | `--title`, `--new-title`, `--new-content` | Edit an existing journal entry |
+| `export` | `--format [txt/json]`, `--filename [optional]` | Export journal entries to a file
