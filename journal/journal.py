@@ -30,3 +30,9 @@ class Journal:
     
     def search_entries(self, keyword):
         return [entry for entry in self.entries if keyword.lower() in entry.content.lower()]
+    
+    def delete_entry(self, title):
+        """Deletes a journal entry by title."""
+        self.entries = [entry for entry in self.entries if entry.title.lower() != title.lower()]
+        self.save_entries()
+        print(f"Entry '{title}' deleted successfully.")

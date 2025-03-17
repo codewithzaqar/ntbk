@@ -3,8 +3,8 @@ from journal.journal import Journal
 
 def main():
     parser = argparse.ArgumentParser(description="Simple Journal CLI")
-    parser.add_argument("action", choices=["add", "list", "search"], help="Action to perform")
-    parser.add_argument("--title", help="Title of the journal entry (for add action)")
+    parser.add_argument("action", choices=["add", "list", "search", "delete"], help="Action to perform")
+    parser.add_argument("--title", help="Title of the journal entry (for add/delete action)")
     parser.add_argument("--content", help="Content of the journal entry (for add action)")
     parser.add_argument("--keyword", help="Keyword to search in journal entries (for search action)")
 
@@ -22,6 +22,12 @@ def main():
         entries = journal.list_entries()
         for entry in entries:
             print(entry)
+
+    elif args.action == "delete":
+        if not args.title:
+            print("Title is required to delete an entry.")
+        else:
+            journal.delete_entry(args.title)
 
     elif args.action == "search":
         if not args.keyword:
