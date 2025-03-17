@@ -36,3 +36,15 @@ class Journal:
         self.entries = [entry for entry in self.entries if entry.title.lower() != title.lower()]
         self.save_entries()
         print(f"Entry '{title}' deleted successfully.")
+
+    def edit_entry(self, title, new_title=None, new_content=None):
+        """Edits an existing journal entry by title."""
+        for entry in self.entries:
+            if entry.title.lower() == title.lower():
+                if new_title:
+                    entry.title = new_title
+                if new_content:
+                    entry.content = new_content
+                self.save_entries()
+                print(f"Entry '{title}' updated successfully.")
+                return print(f"Entry '{title}' not found.")
