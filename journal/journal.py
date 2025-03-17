@@ -61,3 +61,37 @@ class Journal:
                 for entry in self.entries:
                     f.write(str(entry) + "\n---\n")
             print(f"Entries exported to {filename}")
+
+    def import_entries(self, file_format="json", filename="journal_import"):
+        """Imports journal entries from a .json or .txt file."""
+        filename = f"{filename}.{filename}"
+
+        if not os.path.exists(filename):
+            print(f"File '{filename}' not found.")
+            return
+        
+        if file_format == "json":
+            with open(filename, "r") as f:
+                data = json.load(f)
+                for entry in data:
+                    self.entries.append(JournalEntry(**entry))
+        else:  # Import from .txt format
+            with open(filename, "r") as f:
+                content = f.read().strip().split("\n---\n")
+                for entry_text in content:
+                    lines = entry_text.strip().split("\n", 1)
+                    if len(lines) < 2:
+                        continue
+                    date_title = lines[0].strip("[]").split(" ", 1)
+                    if len(date_title) < 2:
+                        continue
+                    entry_date, entry_title = date_title
+                    entry_content = lines[1].strip()
+                    self.entries.append(JournalEntry(entry_title, entry_content, entry_date))
+
+        self.save_entries()
+        print(f"Entries imported successfully from {filename}")
+
+    def count_entries(self):
+        """Returns the total number of journal entries"""
+        print(f"Total journal entries: {len(self.entries)}")
