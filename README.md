@@ -1,6 +1,6 @@
 # Ntbk - A Simle Journey CLI
 
-`ntbk` is a simple command-line journaling application written is Python. It allows users to add, list, and search journal entries.
+`ntbk(Notebook)` is a simple command-line journaling application written is Python. It allows users to add, list, and search journal entries.
 
 | Command | Arguments   | Description |
 | ------- | ----------- | ----------- |
