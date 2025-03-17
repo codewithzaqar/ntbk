@@ -10,5 +10,5 @@
 | `delete` | `--title` | Delete a journal entry by title |
 | `edit` | `--title`, `--new-title`, `--new-content` | Edit an existing journal entry |
 | `export` | `--format [txt/json]`, `--filename [optional]` | Export journal entries to a file |
-| `import` | `--import-format [txt/json]`, `--import-filename` | Import journal entries from a file |
+| `import` | `--import-format [txt/json]`, `--import-filename [optional]` | Import journal entries from a file |
 | `count` | None | Display the total number of journal entries |
