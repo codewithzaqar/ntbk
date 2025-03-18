@@ -10,3 +10,4 @@ env/
 *.tmp
 
 journal.json
+journal_backup.json

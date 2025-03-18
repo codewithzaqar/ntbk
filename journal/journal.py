@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from .entry import JournalEntry
 
 JOURNAL_FILE = "journal.json"
@@ -26,10 +27,27 @@ class Journal:
         return entry
     
     def list_entries(self):
-        return self.entries
+        """Lists all journal entries sorted by date (newest first)."""
+        sorted_entries = sorted(self.entries, key=lambda e: e.date, reverse=True)
+        for entry in sorted_entries:
+            print(entry)
     
     def search_entries(self, keyword):
-        return [entry for entry in self.entries if keyword.lower() in entry.content.lower()]
+        """Searches for journal entries containing the keyword and highlights matches."""
+        keyword_lower = keyword.lower()
+        results = []
+
+        for entry in self.entries:
+            if keyword_lower in entry.content.lower():
+                highlighted_content = re.sub(f"({keyword})", r"\033[1;32m\1\033[0m", entry.content, flags=re.IGNORECASE)
+                highlighted_entry = f"[{entry.date}] {entry.title}\n{highlighted_content}\n"
+                results.append(highlighted_entry)
+
+            if results:
+                for result in results:
+                    print(result)
+            else:
+                print("No matching entries found.")
     
     def delete_entry(self, title):
         """Deletes a journal entry by title."""

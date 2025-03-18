@@ -38,10 +38,8 @@ def main():
     elif args.action == "search":
         if not args.keyword:
             print("Keyword is required for search.")
-            return
-        results = journal.search_entries(args.keyword)
-        for entry in results:
-            print(entry)
+        else:
+            journal.search_entries(args.keyword)
     
     elif args.action == "edit":
         if not args.title:

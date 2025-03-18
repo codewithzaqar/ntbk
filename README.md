@@ -6,7 +6,7 @@
 | ------- | ----------- | ----------- |
 | `add`     | `--title`, `--content`| Add a new journal entry    |
 | `list`    | None | Display all journal entries |
-| `search`  | `--keyword` | Search for journal entries by keyword |
+| `search`  | `--keyword` | Search for journal entries by keyword (highlights matches) |
 | `delete` | `--title` | Delete a journal entry by title |
 | `edit` | `--title`, `--new-title`, `--new-content` | Edit an existing journal entry |
 | `export` | `--format [txt/json]`, `--filename [optional]` | Export journal entries to a file |
